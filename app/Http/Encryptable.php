@@ -12,21 +12,7 @@ trait Encryptable
 
         return $value;
     }
-    public function getAttributes(){
-        $columsNames = parent::getAllColumnsNames();
-        $attributes = parent::getAttributes();
 
-        foreach ($attribute as $key => $value) {
-            if (in_array($key, $this->encryptable)) {
-            $attributes[$key] = Crypt::decrypt($value);
-            }
-        }
-
-        return $attributes;
-
-
-
-    }
 
     public function setAttribute($key, $value)
     {

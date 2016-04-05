@@ -2,6 +2,7 @@
 namespace App;
 
 use Crypt;
+use Config;
 
 trait Encryptable
 {
@@ -19,6 +20,9 @@ trait Encryptable
     public function setAttribute($key, $value)
     {
         if (in_array($key, $this->encryptable)) {
+            $newEncrypter = new \Illuminate\Encryption\Encrypter( "wedgsgbsdr4bey57ere5y7beyb75eb7s" , Config::get( 'app.cipher' ) );
+            $encrypted = $newEncrypter->encrypt( $value );
+            $decrypted = $newEncrypter->decrypt( $encrypted );
             $value = Crypt::encrypt($value);
         }
 

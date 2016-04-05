@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Request;
 
 use App\User;
 use View;
@@ -18,20 +16,19 @@ class UserController extends Controller
     }
     public function show($id){
 
-
     	return User::where('id',$id)->get();
     }
     public function store(){
 
-$user = new User;
+		$user = new User;
+		$user->name = Request::input('name');
+		$user->address = Request::input('address');
+		$user->email = Request::input('email');
+		$user->username =  Request::input('username');
+		$user->password =  Request::input('password');
+		$user->recordEncryptionKey = "asdfatgbastbarybesreryberyerybeeryryryryryryryry";
+		$user->save();
 
-$user->name = 'John2';
-
-$user->email = 'mail7w3@gmail.com';
-
-$user->somekey = 'key';
-$user->save();
-
-    	return User::getU();
+    	return "done";
     }
 }

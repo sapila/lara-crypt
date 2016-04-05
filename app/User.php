@@ -7,8 +7,14 @@ class User extends Authenticatable
 {
     use Encryptable;
 
+
+
+    public function __construct() {
+    }
+
+    public static $recordEncryptionKey= "wedgsgbsdr4bey57ere5y7beyb75eb7s";
     protected $encryptable = [
-        'somekey','name'
+        'password','address'
     ];
     /**
      * The attributes that are mass assignable.
@@ -28,10 +34,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function getU(){
-        return "in post";
-    }
-    public static function getAll(){
-        return "all";
-    }
+
 }
