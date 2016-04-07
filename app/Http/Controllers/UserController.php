@@ -26,7 +26,7 @@ class UserController extends Controller
 		$user->email = Request::input('email');
 		$user->username =  Request::input('username');
 		$user->password =  Request::input('password');
-		$user->recordEncryptionKey = "asdfatgbastbarybesreryberyerybeeryryryryryryryry";
+		$user->recordencryptionkey = str_random(32);;
 		$user->save();
 
     	return "done";

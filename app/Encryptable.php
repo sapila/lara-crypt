@@ -3,29 +3,31 @@ namespace App;
 
 use Crypt;
 use Config;
+use \Illuminate\Encryption\DecryptException;
 
 trait Encryptable
 {
+   
     public function getAttribute($key)
     {
         $value = parent::getAttribute($key);
-
+           
         if (in_array($key, $this->encryptable)) {
-            $value = Crypt::decrypt($value);
+            try{    
+                $cryptedKey = parent::getAttribute('recordencryptionkey');
+                $baseEncrypter = new \Illuminate\Encryption\Encrypter( Config::get('app.key') , Config::get( 'app.cipher' ) );
+                $cleanKey = $baseEncrypter->decrypt($cryptedKey);            
+               
+                $newEncrypter = new \Illuminate\Encryption\Encrypter( $cleanKey , Config::get( 'app.cipher' ) );
+                $value = $newEncrypter->decrypt($value);
+            }
+            catch (\Exception  $e){
+                $value = parent::getAttribute($key);
+            }
+            
         }
 
         return $value;
     }
 
-    public function setAttribute($key, $value)
-    {
-        if (in_array($key, $this->encryptable)) {
-            $newEncrypter = new \Illuminate\Encryption\Encrypter( "wedgsgbsdr4bey57ere5y7beyb75eb7s" , Config::get( 'app.cipher' ) );
-            $encrypted = $newEncrypter->encrypt( $value );
-            $decrypted = $newEncrypter->decrypt( $encrypted );
-            $value = Crypt::encrypt($value);
-        }
-
-        return parent::setAttribute($key, $value);
-    }
 }
