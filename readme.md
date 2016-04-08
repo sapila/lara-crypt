@@ -1,10 +1,21 @@
-# Laravel PHP Framework
+
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+
+## Laravel Encription Demo 
+
+This demo uses a "creating" event to encrypt the data and using a trait it overights the getAttribute function
+to decrypt the models attributes so that they can be easily accessed as a normal Eloquent model
+
+Each row has each own generated encryption key. After enctypting the model attributes the generated key is encrypted
+based on the app key and then get stored in the datebase.In the decryption phase, if an attribute is encryptable,
+we get the record key , we decrypt it based on app key and with that decrypted key we decrypt the other attributes.
+
+# Laravel PHP Framework
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
