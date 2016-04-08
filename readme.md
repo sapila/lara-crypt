@@ -1,4 +1,5 @@
 
+## Laravel Encryption Demo 
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -6,7 +7,6 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-## Laravel Encription Demo 
 
 This demo uses a "creating" event to encrypt the data and using a trait it overights the getAttribute function
 to decrypt the models attributes so that they can be easily accessed as a normal Eloquent model
