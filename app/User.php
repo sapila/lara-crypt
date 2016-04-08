@@ -54,11 +54,9 @@ class User extends Authenticatable
                $user->$key = $newEncrypter->encrypt( $value );
            }
            
-            //$user->email = $recordKey;
            $baseEncrypter = new \Illuminate\Encryption\Encrypter( Config::get('app.key') , Config::get( 'app.cipher' ) );
            //store the generated record encryption key after encrypting in with the app key
             $user->recordencryptionkey = $baseEncrypter->encrypt($recordKey);
-            //$user->email = $baseEncrypter->decrypt($user->recordencryptionkey);
         });
 
     }
